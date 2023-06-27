@@ -327,8 +327,6 @@ columnas_eliminadas <- datos_hospital |>
   select_if(~ any(is.na(.))) |> 
   names()
 
-print(paste("Se eliminaron", filas_vacias_eliminadas, "filas vacías."))
-print(paste("Se eliminaron las siguientes columnas:", paste(columnas_eliminadas, collapse = ", ")))
 ```
 
 
@@ -336,11 +334,20 @@ print(paste("Se eliminaron las siguientes columnas:", paste(columnas_eliminadas,
 en donde haya NAs, además donde diga "Yes", cámbielo por "Sí"
 
 ```{r}
-datos_hospital <- datos_hospital |> 
-  mutate(chills = ifelse(is.na(chills) | chills == "Yes", "Sí", chills),
-         cough = ifelse(is.na(cough) | cough == "Yes", "Sí", cough),
-         aches = ifelse(is.na(aches) | aches == "Yes", "Sí", aches),
-         vomit = ifelse(is.na(vomit) | vomit == "Yes", "Sí", vomit))
+datos_hospital_reemplazo <- datos_hospital |> 
+  mutate(chills = replace_na(chills, "Sin información"),
+         cough = replace_na(cough, "Sin información"),
+         aches = replace_na(aches, "sin información"),
+         vomit = replace_na(vomit, "sin información")) |> 
+  mutate(chills = case_when(chills == "yes" ~ "si",
+                                  TRUE ~ chills),
+         
+                        cough =case_when(cough == "yes" ~ "si",
+                                  TRUE ~ cough),
+                       aches= case_when( aches == "yes" ~ "si",
+                                  TRUE ~ aches),
+                        vomit=case_when( vomit == "yes" ~ "si",
+                                  TRUE ~ vomit))
 ```
 
 
@@ -348,7 +355,7 @@ datos_hospital <- datos_hospital |>
 Si la temperatura es mayor o igual que 37, diga "Si", pero si la temperatura es menor a 37, diga "No".
 
 ```{r}
-datos_hospital <- datos_hospital %>%
+datos_hospital <- datos_hospital |> 
   mutate(tiene_fiebre = ifelse(temp >= 37, "Si", "No"))
 
 
@@ -358,14 +365,11 @@ datos_hospital <- datos_hospital %>%
 6. Revise el conjunto de datos e implemente otras estrategias de limpieza y preparación
 de datos que le parezcan relevantes para este conjunto de datos.
 
-```{r}
-datos_hospital <- datos_hospital |> 
-  select(-time_admission)
-```
 
 ```{r}
 datos_hospital <- datos_hospital |> 
   mutate(hospital = replace(hospital, is.na(hospital), "Sin información"))
 ```
+
 
 

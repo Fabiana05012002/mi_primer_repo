@@ -131,7 +131,7 @@ La librería lubridate nos permite la transformación de columnas de tipo carác
 a tipo date o datetime. 
 
 ```{r}
-glimpse(datos_limpios_hospital)
+glimpse(datos_hospital_2)
 ```
 
 Lo primero que tenemos que hacer para lograr esto, es identificar el formato 
@@ -140,7 +140,7 @@ es dia/mes/año (dmy). Para transformar esto en una fecha, usamos en este caso
 la función dmy de lubridate, como se muestra a continuación:
 
 ```{r}
-datos_hospital_3 <- datos_limpios_hospital |> 
+datos_hospital_3 <- datos_hospital_2 |> 
   mutate(infection_date = dmy(infection_date))
 ```
 
@@ -169,7 +169,7 @@ que tenemos en infection_date. Hay varias maneras de hacer esto:
 
 Como una tabla:
 ```{r}
-datos_hospital_3 %>%
+datos_hospital_3 |> 
   summarise(min_fecha = min(infection_date, na.rm = TRUE),
             max_fecha = max(infection_date, na.rm = TRUE))
 ```
@@ -186,6 +186,13 @@ En grupos y usando git y un repositorio de github, divida las siguientes tareas
 con sus compañeras sobre preparación y limpieza de datos:
 
 a. Ajustar los nombres de las columnas a español
+
+```{r}
+datos_hospital <- datos_hospital |> 
+  rename()
+
+```
+
 
 b. Eliminar columnas que no proveen información relevante (merged_header y 20..., también
 elimine la columna fever).
