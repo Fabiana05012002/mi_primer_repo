@@ -300,16 +300,76 @@ con la función read_csv de readr.
 datos_hospital <- read_csv2("https://raw.githubusercontent.com/isa229/programacion_analisis_datos_ii/main/registros_hospitales2.csv")
 ```
 
-2. Determine si hay filas duplicadas. En el caso de que haya, cuántas y cuáles son?
+2. Determine si hay filas duplicadas. 
+
+```{r}
+filas_duplicadas_hospital_ <- datos_hospital |>  
+  duplicated() |>  
+  sum()
+
+if (filas_duplicadas_hospital_ > 0) {
+  print(paste("Hay", filas_duplicadas_hospital_, "filas duplicadas."))
+} else {
+  print("No hay filas duplicadas.")
+}
+```
+
 
 3. Elimine las filas y columnas vacías (si hay). Cuántas filas vacías eliminó? Eliminó 
 alguna columna?
 
+```{r}
+filas_vacias_eliminadas <- datos_hospital |> 
+  drop_na() |> 
+  nrow() - nrow(datos_hospital)
+
+columnas_eliminadas <- datos_hospital |> 
+  select_if(~ any(is.na(.))) |> 
+  names()
+
+```
+
+
 4. Para las columnas chills, cough, aches, vomit coloque "Sin información"
 en donde haya NAs, además donde diga "Yes", cámbielo por "Sí"
+
+```{r}
+datos_hospital_reemplazo <- datos_hospital |> 
+  mutate(chills = replace_na(chills, "Sin información"),
+         cough = replace_na(cough, "Sin información"),
+         aches = replace_na(aches, "sin información"),
+         vomit = replace_na(vomit, "sin información")) |> 
+  mutate(chills = case_when(chills == "yes" ~ "si",
+                                  TRUE ~ chills),
+         
+                        cough =case_when(cough == "yes" ~ "si",
+                                  TRUE ~ cough),
+                       aches= case_when( aches == "yes" ~ "si",
+                                  TRUE ~ aches),
+                        vomit=case_when( vomit == "yes" ~ "si",
+                                  TRUE ~ vomit))
+```
+
 
 5. Cree una nueva columna llamada tiene_fiebre que se calcule de la siguiente manera:
 Si la temperatura es mayor o igual que 37, diga "Si", pero si la temperatura es menor a 37, diga "No".
 
+```{r}
+datos_hospital <- datos_hospital |> 
+  mutate(tiene_fiebre = ifelse(temp >= 37, "Si", "No"))
+
+
+```
+
+
 6. Revise el conjunto de datos e implemente otras estrategias de limpieza y preparación
 de datos que le parezcan relevantes para este conjunto de datos.
+
+
+```{r}
+datos_hospital <- datos_hospital |> 
+  mutate(hospital = replace(hospital, is.na(hospital), "Sin información"))
+```
+
+
+
