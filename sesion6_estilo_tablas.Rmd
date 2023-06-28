@@ -301,6 +301,21 @@ Datos_aire
 d. Además, agrupelas columnas Ozone, Solar.R y Wind bajo un tab_spanner llamada "Mediciones", 
 y las columnas Temp, Month y Day bajo un tab_spanner llamado "Tiempo".
 
+
+```{r}
+Datos_aire <- Datos_aire |> 
+  tab_spanner(
+    label = "Mediciones",
+    columns = c(Ozone, Solar.R,Wind)
+  ) |>
+  tab_spanner(
+    label = "Tiempo",
+    columns = c(Temp, Month,Day)
+  )
+Datos_aire
+```
+
+
 e. Renombre las columnas para que estén en español y coloque colores a su gusto a 
 la columna Temperatura.
 
