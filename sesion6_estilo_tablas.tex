@@ -497,6 +497,50 @@ Fuente: The World Almanac and Book of Facts, 1975, page 406.\\
 McNeil, D. R. (1977) Interactive Data Analysis. Wiley.\\
 \end{minipage}
 
+Ejercicios para la observacion 1688 que diga ``El tamaño más grande''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{islas\_gt }\OtherTok{\textless{}{-}}\NormalTok{ islas\_gt }\SpecialCharTok{|\textgreater{}} 
+\FunctionTok{tab\_footnote}\NormalTok{( }
+  \AttributeTok{footnote =} \StringTok{"El tamaño más grande"}\NormalTok{,}
+  \AttributeTok{locations =}  \FunctionTok{cells\_body}\NormalTok{(}\AttributeTok{columns =}\NormalTok{ tamano, }\AttributeTok{rows =} \DecValTok{1}\NormalTok{ ))}
+
+\NormalTok{islas\_gt}
+\end{Highlighting}
+\end{Shaded}
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{llr}
+\caption*{
+{\large Grandes masas terrestres del mundo} \\ 
+{\small Se presentan las 10 más grandes}
+} \\ 
+\toprule
+\multicolumn{2}{c}{Información política} & Información geográfica \\ 
+\cmidrule(lr){1-2} \cmidrule(lr){3-3}
+nombre & tipo & tamano\textsuperscript{\textit{1}} \\ 
+\midrule
+Asia & Continente & \textsuperscript{\textit{2}} 16988 \\ 
+Africa & Continente & 11506 \\ 
+North America\textsuperscript{\textit{3}} & Continente & 9390 \\ 
+South America\textsuperscript{\textit{3}} & Continente & 6795 \\ 
+Antarctica & Continente & 5500 \\ 
+Europe & Continente & 3745 \\ 
+Australia & País & 2968 \\ 
+Greenland & País & 840 \\ 
+New Guinea & Subregión & 306 \\ 
+Borneo & Subregión & 280 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textsuperscript{\textit{1}}Tamaño en miles de millas cuadradas\\
+\textsuperscript{\textit{2}}El tamaño más grande\\
+\textsuperscript{\textit{3}}Las Américas\\
+Fuente: The World Almanac and Book of Facts, 1975, page 406.\\
+McNeil, D. R. (1977) Interactive Data Analysis. Wiley.\\
+\end{minipage}
+
 En resumen, en location usamos:
 
 \begin{itemize}
@@ -540,10 +584,10 @@ renderiza en docx o html, pero no en pdf.
 \cmidrule(lr){1-2} \cmidrule(lr){3-3}
 nombre & tipo & tamano\textsuperscript{\textit{1}} \\ 
 \midrule
-Asia & Continente & 16988 \\ 
+Asia & Continente & \textsuperscript{\textit{2}} 16988 \\ 
 Africa & Continente & 11506 \\ 
-North America\textsuperscript{\textit{2}} & Continente & 9390 \\ 
-South America\textsuperscript{\textit{2}} & Continente & 6795 \\ 
+North America\textsuperscript{\textit{3}} & Continente & 9390 \\ 
+South America\textsuperscript{\textit{3}} & Continente & 6795 \\ 
 Antarctica & Continente & 5500 \\ 
 Europe & Continente & 3745 \\ 
 Australia & País & 2968 \\ 
@@ -554,7 +598,8 @@ Borneo & Subregión & 280 \\
 \end{longtable}
 \begin{minipage}{\linewidth}
 \textsuperscript{\textit{1}}Tamaño en miles de millas cuadradas\\
-\textsuperscript{\textit{2}}Las Américas\\
+\textsuperscript{\textit{2}}El tamaño más grande\\
+\textsuperscript{\textit{3}}Las Américas\\
 Fuente: The World Almanac and Book of Facts, 1975, page 406.\\
 McNeil, D. R. (1977) Interactive Data Analysis. Wiley.\\
 \end{minipage}
@@ -589,10 +634,10 @@ Podemos hacer esto con la función cols\_label:
 \cmidrule(lr){1-2} \cmidrule(lr){3-3}
 Nombre & Tipo & Area\textsuperscript{\textit{1}} \\ 
 \midrule
-Asia & Continente & 16988 \\ 
+Asia & Continente & \textsuperscript{\textit{2}} 16988 \\ 
 Africa & Continente & 11506 \\ 
-North America\textsuperscript{\textit{2}} & Continente & 9390 \\ 
-South America\textsuperscript{\textit{2}} & Continente & 6795 \\ 
+North America\textsuperscript{\textit{3}} & Continente & 9390 \\ 
+South America\textsuperscript{\textit{3}} & Continente & 6795 \\ 
 Antarctica & Continente & 5500 \\ 
 Europe & Continente & 3745 \\ 
 Australia & País & 2968 \\ 
@@ -603,7 +648,8 @@ Borneo & Subregión & 280 \\
 \end{longtable}
 \begin{minipage}{\linewidth}
 \textsuperscript{\textit{1}}Tamaño en miles de millas cuadradas\\
-\textsuperscript{\textit{2}}Las Américas\\
+\textsuperscript{\textit{2}}El tamaño más grande\\
+\textsuperscript{\textit{3}}Las Américas\\
 Fuente: The World Almanac and Book of Facts, 1975, page 406.\\
 McNeil, D. R. (1977) Interactive Data Analysis. Wiley.\\
 \end{minipage}
