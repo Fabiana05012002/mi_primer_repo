@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(gt)
 library(datasets)
+library(tinytex)
 ```
 
 ## Uso del paquete gt para estilo de cuadros.
@@ -190,6 +191,19 @@ islas_gt <- islas_gt |>
 islas_gt
 ```
 
+Ejercicios para la observacion 1688 que diga "El tamaño más grande"
+
+```{r}
+islas_gt <- islas_gt |> 
+tab_footnote( 
+  footnote = "El tamaño más grande",
+  locations =  cells_body(columns = tamano, rows = 1 ))
+
+islas_gt
+```
+
+
+
 En resumen, en location usamos:
 
 - cells_body si la nota va dentro del cuerpo de la tabla
@@ -240,12 +254,19 @@ datos_calidad_aire <- datasets::airquality
 ```
 
 b. Obtenga un cuadro con los 10 registros con las temperaturas reportadas más altas
-```{r}
 
+```{r}
+Datos_aire <- datos_calidad_aire |> 
+  arrange(desc(Temp)) |> 
+  head(10)
 ```
 
 c. Agregue títulos, subtítulos, fuente y pie de tabla al cuadro obtenido. Recuerde
 usar ?airquality para obtener información sobre el origen de los datos.
+
+
+
+
 
 d. Además, agrupelas columnas Ozone, Solar.R y Wind bajo un tab_spanner llamada "Mediciones", 
 y las columnas Temp, Month y Day bajo un tab_spanner llamado "Tiempo".
