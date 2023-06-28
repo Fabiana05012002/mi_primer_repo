@@ -1,6 +1,6 @@
 ---
 title: "sesion6_formato_tablas"
-author: "Kimberley Isabel Orozco Cornejo"
+author: "Fabiana Hidalgo Fallas"
 date: "2023-06-27"
 output:
   pdf_document: default
